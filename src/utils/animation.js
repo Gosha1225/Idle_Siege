@@ -14,9 +14,9 @@ export function downloadBtnAnimation() {
   anime({
     targets: ".download",
     scale: [
-      { value: 1 },
-      { value: 1.05, duration: 2000 },
-      { value: 1, duration: 2000 },
+      { value: 0.5 },
+      { value: 0.53, duration: 2000 },
+      { value: 0.5, duration: 2000 },
     ],
     loop: true,
     easing: "linear",

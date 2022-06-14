@@ -43,11 +43,13 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
+  left: -10px;
 }
 
 .wall {
   transform: scale(0.13);
   filter: brightness(1.35) contrast(1.1);
+
 }
 
 .gate {
@@ -135,7 +137,7 @@
 
 .platform1 {
   left: -87px;
-  top: 700px;
+  top: 492px;
 }
 
 .platform2 {
@@ -146,7 +148,7 @@
 .structure {
   transform: scale(0.3);
   filter: brightness(1.1) contrast(1.3);
-  top: 543px;
+  top: 333px;
   left: -70px;
 }
 
@@ -317,6 +319,11 @@
   align-items: center;
 }
 
+.secondbackground{
+  top: 110px;
+  transform: scaleX(1.15) scaleY(1.31);
+}
+
 .logo {
   position: absolute;
   top: 130px;
@@ -324,22 +331,27 @@
 
 .final-screen p {
   position: absolute;
-  top: 500px;
+  top: 358px;
+  color: rgb(173, 22, 22);
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: gold;
 }
 
 .download {
   position: absolute;
-  top: 1300px;
+  top: 585px;
+  transform: scale(0.5);
 }
 
 .app-store {
   position: absolute;
-  top: 1540px;
+  top: 710px;
+  transform: scale(0.63);
 }
 
 .google-play {
   position: absolute;
-  top: 1540px;
+  top: 850px;
 }
 
 .hidden {
