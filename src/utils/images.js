@@ -1,26 +1,50 @@
-import firstBackground from "../../assets/first_background.png";
+import firstBackground from "../../assets/BG.png";
 
-import wallUp from "../../assets/structures/wall-up.png";
-import wallDown from "../../assets/structures/wall-down.png";
+import wallUp from "../../assets/trim/Gate_Wall_02.png";
+import wallDown from "../../assets/trim/Gate_Wall_01.png";
 import broken from "../../assets/structures/Destroyed_Wall.png";
-import gate from "../../assets/structures/Gate.png";
-import column from "../../assets/structures/Column.png";
-import castle from "../../assets/structures/Castle.png";
+import gate from "../../assets/trim/Gate.png";
+import column from "../../assets/trim/Column.png";
+import castle from "../../assets/trim/Castle.png";
 
-import platform from "../../assets/structures/Platform.png";
-import barrack from "../../assets/structures/Barrack.png";
-import clickBarrack from "../../assets/structures/Barrack_green.png";
-import structure from "../../assets/structures/Structure.png";
+import arrow from "../../assets/arrow_down.png";
+import platform from "../../assets/new/rend/plus_plane.png";
+import barrack from "../../assets/trim/Barak_01.png";
 
-import runFrom from "../../assets/character_anim/Run_from_anim.gif";
-import runTo from "../../assets/character_anim/Run_to_anim.gif";
-import attack from "../../assets/character_anim/Attack_anim.gif";
+import runFrom from "../../assets/bottom-run.gif";
+import runTo from "../../assets/marauder_up.gif";
+import attack from "../../assets/attack.gif";
 
-import finalScreen from "../../assets/Final_screen.png";
+import finalScreen from "../../assets/BG_EndCard.jpg";
 
-import appStore from "../../assets/App_Store.png";
-import googlePlay from "../../assets/Google_play.png";
-import download from "../../assets/DOWNLOAD_NOW.png";
+import download from "../../assets/DN.png";
+
+import coin from "../../assets/Icon_Coin.png";
+import heart from "../../assets/Heart.png";
+
+import chooseBuilding from "../../assets/ChooseBuilding.png";
+import icon1 from "../../assets/tinified/Camp_preview_new_0.png";
+import icon2 from "../../assets/tinified/Ram_Camp.png";
+
+import panel from "../../assets/LootCamp.png";
+import summonBtn from "../../assets/SummonArmy.png";
+
+const icons = [icon1, icon2];
+
+setSource(document.querySelector(".arrow"), arrow);
+
+setSource(document.querySelector(".choose-building"), chooseBuilding);
+setSource(document.querySelector(".panel"), panel);
+setSource(document.querySelector(".summon-btn"), summonBtn);
+
+setSource(document.querySelector(".price-coin1"), coin);
+setSource(document.querySelector(".price-coin2"), coin);
+setSource(document.querySelector(".gold-coin"), coin);
+setSource(document.querySelector(".heart"), heart);
+
+document.querySelectorAll(".icon").forEach((icon, index) => {
+  setSource(icon, icons[index]);
+});
 
 setSource(document.querySelector(".firstbackground"), firstBackground);
 
@@ -39,9 +63,7 @@ setSource(document.querySelector(".column"), column);
 setSource(document.querySelector(".castle"), castle);
 
 document.querySelectorAll(".platform").forEach((el) => setSource(el, platform));
-setSource(document.querySelector(".structure"), structure);
 setSource(document.querySelector(".barrack"), barrack);
-setSource(document.querySelector(".clickbarrack"), clickBarrack);
 
 document
   .querySelectorAll(".soldier-from")
@@ -54,8 +76,6 @@ document
 setSource(document.querySelector(".secondbackground"), finalScreen);
 
 setSource(document.querySelector(".download"), download);
-setSource(document.querySelector(".app-store"), appStore);
-setSource(document.querySelector(".google-play"), googlePlay);
 
 function setSource(el, source) {
   el.src = el.src || source;

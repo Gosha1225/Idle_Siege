@@ -34,7 +34,8 @@
 }
 
 .firstbackground {
-  filter: brightness(1.2) contrast(1.1);
+  transform: scale(1);
+  top: 0px;
 }
 
 .walls {
@@ -43,106 +44,91 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  left: -10px;
+  left: 0px;
+  top: 0px;
 }
 
 .wall {
-  transform: scale(0.13);
-  filter: brightness(1.35) contrast(1.1);
-
+  transform: scale(1.2);
 }
 
 .gate {
-  transform: scale(0.6);
-  filter: brightness(1.1) contrast(1.3);
-  top: 310px;
-  left: 220px;
+  top: 273px;
+  left: 188px;
 }
 
 .broken1 {
   transform: scale(0.6);
-  top: 379px;
-  left: 220px;
+  top: 328px;
+  left: 142px;
 }
 
 .broken2 {
   transform: scale(0.6);
-  top: 402px;
-  left: 255px;
+  top: 372px;
+  left: 234px;
 }
 
 .column {
-  transform: scale(0.2);
-  filter: brightness(1.3) contrast(1.5);
-  top: 152px;
-  left: 264px;
+  top: 423px;
+  left: 429px;
 }
 
 .castle {
-  transform: scale(0.5);
-  filter: brightness(1.3) contrast(1.5);
-  top: -186px;
-  left: 90px;
+  top: 0px;
+  left: 272px;
 }
 
 .walldown1 {
-  left: -320px;
-  top: -100px;
+  left: -49px;
+  top: 163px;
 }
 
 .walldown2 {
-  left: -259px;
-  top: -63px;
+  left: 10px;
+  top: 200px;
 }
 
 .walldown3 {
-  left: -198px;
-  top: -26px;
+  left: 73px;
+  top: 238px;
 }
 
 .walldown4 {
-  left: -137px;
-  top: 11px;
+  left: 136px;
+  top: 277px;
 }
 
 .walldown5 {
-  left: -76px;
-  top: 48px;
+  left: 317px;
+  top: 377px;
 }
 
 .walldown6 {
-  left: 54px;
-  top: 127px;
+  left: 381px;
+  top: 414px;
 }
 
 .wallup1 {
-  left: 142px;
-  top: 129px;
+  left: 476px;
+  top: 417px;
 }
 
 .wallup2 {
-  left: 208px;
-  top: 91px;
+  left: 535px;
+  top: 379px;
 }
 
 .camp {
   position: absolute;
   display: flex;
+  left: 0px;
+  top: 0px;
 }
 
 .platform {
-  transform: scale(0.4);
-  filter: brightness(1.1) contrast(1.3);
-}
-
-.platform1 {
-  left: -87px;
-  top: 492px;
-}
-
-.platform2 {
-  left: -420px;
-  top: 320px;
+  left: 14px;
+  top: 507px;
 }
 
 .structure {
@@ -152,23 +138,36 @@
   left: -70px;
 }
 
-.barrack {
-  transform: scale(0.48);
-  filter: brightness(1.1) contrast(1.3);
-  top: 295px;
-  left: -315px;
+.arrow-container {
+  position: absolute;
+  transform: scale(0.6);
+  top: 440px;
+  left: 40px;
 }
 
-.clickbarrack {
-  transform: scale(0.48);
-  top: 295px;
-  left: -315px;
+.here {
+  position: absolute;
+  top: -110px;
+  left: 10px;
+  font-size: 50px;
+  color: rgb(255, 253, 162);
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+.barrack {
+  top: 460px;
+  left: 26px;
+}
+
+.army {
+  transform: scale(0.8);
 }
 
 .army-from {
   position: absolute;
   display: flex;
-  top: 440px;
+  top: 492px;
   left: 116px;
 }
 
@@ -205,8 +204,8 @@
 .army-to {
   position: absolute;
   display: flex;
-  top: 460px;
-  left: 170px;
+  top: 551px;
+  left: 171px;
 }
 
 .soldier-to1 {
@@ -242,8 +241,8 @@
 .army-attack {
   position: absolute;
   display: flex;
-  top: 370px;
-  left: 190px;
+  top: 289px;
+  left: 171px;
 }
 
 .soldier-attack1 {
@@ -279,10 +278,11 @@
 .health-bar {
   position: absolute;
   display: flex;
-  top: 320px;
-  left: 264px;
+  top: 260px;
+  left: 234px;
   width: 100px;
   height: 15px;
+  border-radius: 20px;
   background-color: red;
   border: 2px solid;
   border-color: black;
@@ -296,17 +296,105 @@
   width: 100%;
 }
 
-.target p {
-  font-weight: 900;
-  font-size: 25px;
-  top: -50px;
-}
-
 .health {
   position: absolute;
   height: 100%;
   width: 100%;
+  border-radius: 20px;
   background-color: rgb(0, 201, 0);
+}
+
+.slider {
+  position: absolute;
+  display: flex;
+  left: 0px;
+  top: 960px;
+}
+
+.panel {
+  top: 0px;
+  left: 0px;
+}
+
+.summon-btn {
+  top: 250px;
+  left: 122px;
+}
+
+.icons {
+  position: absolute;
+  display: flex;
+  top: 920px;
+  left: 0px;
+}
+
+.icon {
+  transform: scale(0.35);
+}
+
+.heart {
+  transform: scale(0.6);
+  left: -30px;
+  top: -20px;
+}
+
+.gold-coin {
+  top: 20px;
+  left: 30px;
+  transform: scale(0.6);
+}
+
+.gold-text {
+  top: 35px;
+  left: 90px;
+  color: gold;
+  font-size: 35px;
+}
+
+.choose-building {
+  top: 47px;
+  left: 0px;
+}
+
+.icon1 {
+  top: 0px;
+  left: -54px;
+  border: 10px solid gold;
+  border-radius: 25px;
+}
+
+.price-coin1 {
+  transform: scale(0.6);
+  top: 316px;
+  left: 92px;
+}
+
+.price1 {
+  top: 330px;
+  left: 150px;
+  font-size: 35px;
+  color: gold;
+}
+
+.icon2 {
+  top: 0px;
+  left: 136px;
+  border: 10px solid gold;
+  border-radius: 25px;
+  filter: grayscale(100%);
+}
+
+.price-coin2 {
+  transform: scale(0.6);
+  top: 316px;
+  left: 298px;
+}
+
+.price2 {
+  top: 330px;
+  left: 358px;
+  font-size: 35px;
+  color: red;
 }
 
 .final-screen {
@@ -315,13 +403,14 @@
   position: absolute;
   display: flex;
   flex-direction: column;
+  /* top: 0px; */
   top: -960px;
   align-items: center;
 }
 
-.secondbackground{
-  top: 110px;
-  transform: scaleX(1.15) scaleY(1.31);
+.secondbackground {
+  width: 540px;
+  height: 960px;
 }
 
 .logo {
@@ -332,26 +421,31 @@
 .final-screen p {
   position: absolute;
   top: 358px;
-  color: rgb(173, 22, 22);
-  -webkit-text-stroke-width: 4px;
-  -webkit-text-stroke-color: gold;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 .download {
   position: absolute;
-  top: 585px;
-  transform: scale(0.5);
+  top: 675px;
+  width: 80%;
 }
 
 .app-store {
   position: absolute;
-  top: 710px;
-  transform: scale(0.63);
+  top: 850px;
+  left: 300px;
+  width: 200px;
+  height: 70px;
 }
 
-.google-play {
+.play-store {
   position: absolute;
   top: 850px;
+  left: 40px;
+  width: 200px;
+  height: 70px;
 }
 
 .hidden {

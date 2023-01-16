@@ -6,38 +6,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="#" />
     <title>Idle Siege</title>
+    <script>
+      function getScript(e, i) {
+        var n = document.createElement("script");
+        (n.type = "text/javascript"),
+          (n.async = !0),
+          i && (n.onload = i),
+          (n.src = e),
+          document.head.appendChild(n);
+      }
+      function parseMessage(e) {
+        try {
+          var i = e.data,
+            n = i.indexOf(DOLLAR_PREFIX + RECEIVE_MSG_PREFIX);
+          if (-1 !== n) {
+            var t = i.slice(n + 2);
+            return getMessageParams(t);
+          }
+        } catch (e) {}
+
+        return {};
+      }
+      function getMessageParams(e) {
+        var i,
+          n = [],
+          t = e.split("/"),
+          a = t.length;
+        if (-1 === e.indexOf(RECEIVE_MSG_PREFIX)) {
+          if (a >= 2 && a % 2 === 0)
+            for (i = 0; a > i; i += 2)
+              n[t[i]] = t.length < i + 1 ? null : decodeURIComponent(t[i + 1]);
+        } else {
+          var o = e.split(RECEIVE_MSG_PREFIX);
+          void 0 !== o[1] && (n = JSON && JSON.parse(o[1]));
+        }
+        return n;
+      }
+      function getDapi(e) {
+        var i = parseMessage(e);
+        if (!i || i.name === GET_DAPI_URL_MSG_NAME) {
+          var n = i.data;
+          getScript(n, onDapiReceived);
+        }
+      }
+      function invokeDapiListeners() {
+        for (var e in dapiEventsPool)
+          dapiEventsPool.hasOwnProperty(e) &&
+            dapi.addEventListener(e, dapiEventsPool[e]);
+      }
+      function onDapiReceived() {
+        (dapi = window.dapi),
+          window.removeEventListener("message", getDapi),
+          invokeDapiListeners();
+      }
+      function init() {
+        window.dapi.isDemoDapi &&
+          (window.parent.postMessage(
+            DOLLAR_PREFIX +
+              SEND_MSG_PREFIX +
+              JSON.stringify({ state: "getDapiUrl" }),
+            "*"
+          ),
+          window.addEventListener("message", getDapi, !1));
+      }
+      var DOLLAR_PREFIX = "$$",
+        RECEIVE_MSG_PREFIX = "DAPI_SERVICE:",
+        SEND_MSG_PREFIX = "DAPI_AD:",
+        GET_DAPI_URL_MSG_NAME = "connection.getDapiUrl",
+        dapiEventsPool = {},
+        dapi = window.dapi || {
+          isReady: function () {
+            return !1;
+          },
+          addEventListener: function (e, i) {
+            dapiEventsPool[e] = i;
+          },
+          removeEventListener: function (e) {
+            delete dapiEventsPool[e];
+          },
+          isDemoDapi: !0,
+        };
+      init();
+    </script>
+    <!-- <script
+      type="text/javascript"
+      src="https://tpc.googlesyndication.com/pagead/gadgets/html5/api/exitapi.js"
+    ></script> -->
   </head>
   <body>
+    <!-- <script type="text/javascript">
+      window.FBPlayableOnCTAClick = () => {
+        typeof FbPlayableAd === "undefined"
+          ? alert("FBPlayableAd.onCTAClick")
+          : FbPlayableAd.onCTAClick();
+      };
+    </script> -->
     <div class="scalable-wrapper" id="scalable-wrapper">
       <div class="scalable-wrapper__content" id="scalable-wrapper__content">
         <div class="first-screen">
           <img class="firstbackground app-img" />
+          <img class="gold-coin app-img" />
+          <p class="gold-text app-text">500</p>
           <div class="walls">
             <img class="app-img castle" />
             <img class="app-img wall walldown1 wall-down" />
             <img class="app-img wall walldown2 wall-down" />
             <img class="app-img wall walldown3 wall-down" />
             <img class="app-img wall walldown4 wall-down" />
-            <img class="app-img wall walldown5 wall-down" />
             <img class="app-img broken1 hidden" />
             <img class="app-img gate" />
             <img class="app-img broken2 hidden" />
+            <img class="app-img wall walldown5 wall-down" />
             <img class="app-img wall walldown6 wall-down" />
             <img class="app-img wall wallup2 wall-up" />
             <img class="app-img wall wallup1 wall-up" />
             <img class="app-img column" />
           </div>
           <div class="camp">
-            <img class="app-img platform platform1" />
             <img class="app-img platform platform2" />
-            <img style="transform: scale(0.48)" class="app-img clickbarrack" />
-            <img
-              style="transform: scale(0.44)"
-              class="app-img barrack hidden"
-            />
-            <img class="app-img structure" />
+            <div class="arrow-container">
+              <p class="app-text here">CLICK HERE</p>
+              <img class="app-img arrow" />
+            </div>
+            <img style="transform: scale(0)" class="app-img barrack hidden" />
           </div>
-          <div class="army-from">
+          <div class="army-from army">
             <img class="app-img soldier-from soldier-from1 hidden" />
             <img class="app-img soldier-from soldier-from2 hidden" />
             <img class="app-img soldier-from soldier-from3 hidden" />
@@ -45,7 +138,7 @@
             <img class="app-img soldier-from soldier-from5 hidden" />
             <img class="app-img soldier-from soldier-from6 hidden" />
           </div>
-          <div class="army-to">
+          <div class="army-to army">
             <img class="app-img soldier-to soldier-to1 hidden" />
             <img class="app-img soldier-to soldier-to2 hidden" />
             <img class="app-img soldier-to soldier-to3 hidden" />
@@ -53,7 +146,7 @@
             <img class="app-img soldier-to soldier-to5 hidden" />
             <img class="app-img soldier-to soldier-to6 hidden" />
           </div>
-          <div class="army-attack">
+          <div class="army-attack army">
             <img class="app-img soldier-attack soldier-attack1 hidden" />
             <img class="app-img soldier-attack soldier-attack2 hidden" />
             <img class="app-img soldier-attack soldier-attack3 hidden" />
@@ -62,27 +155,30 @@
             <img class="app-img soldier-attack soldier-attack6 hidden" />
           </div>
           <div class="health-bar">
-            <div class="target">
-              <p class="app-text">GATE HEALTH</p>
-            </div>
+            <div class="target"></div>
             <div class="health"></div>
+            <img class="app-img heart" />
+          </div>
+          <div class="icons">
+            <img class="app-img choose-building" />
+            <img style="transform: scale(0.35)" class="icon icon1 app-img" />
+            <img class="price-coin1 app-img" />
+            <p class="price1 app-text">350</p>
+            <img class="icon icon2 app-img" />
+            <img class="price-coin2 app-img" />
+            <p class="price2 app-text">900</p>
+          </div>
+          <div class="slider">
+            <img class="panel app-img" />
+            <img class="summon-btn app-img" />
           </div>
         </div>
         <div class="final-screen">
           <img class="secondbackground app-img" />
           <img class="logo app-img" />
-          <p class="app-text">START YOU EPIC ADVENTURE</p>
-          <a class="link1" href=""><img class="download app-img" /></a>
-          <a
-            class="link2"
-            href="https://apps.apple.com/us/app/idle-siege-army-tycoon-game/id1527417124"
-            ><img class="app-store app-img"
-          /></a>
-          <a
-            class="link3"
-            href="https://play.google.com/store/apps/details?id=com.ludigames.android.anmp.idle.siege&hl=ru&gl=US"
-            ><img class="google-play app-img"
-          /></a>
+          <img class="download link app-img" />
+          <div class="app-store link"></div>
+          <div class="play-store link"></div>
         </div>
       </div>
     </div>

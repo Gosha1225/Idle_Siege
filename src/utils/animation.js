@@ -5,7 +5,7 @@ export function finalScreenAnimation() {
     targets: ".final-screen",
     top: "0px",
     duration: 900,
-    delay: 500,
+    delay: 100,
     easing: "easeInOutQuart",
   });
 }
@@ -14,12 +14,63 @@ export function downloadBtnAnimation() {
   anime({
     targets: ".download",
     scale: [
-      { value: 0.5 },
-      { value: 0.53, duration: 2000 },
-      { value: 0.5, duration: 2000 },
+      { value: 1 },
+      { value: 1.05, duration: 2000 },
+      { value: 1, duration: 2000 },
     ],
     loop: true,
     easing: "linear",
+  });
+}
+
+export function iconsAnimation() {
+  anime({
+    targets: ".icons",
+    top: "493px",
+    duration: 900,
+    easing: "easeOutQuart",
+  });
+}
+
+export function iconsDownAnimation() {
+  return new Promise((res) => {
+    anime({
+      targets: ".icons",
+      complete: res,
+      top: "920px",
+      duration: 900,
+      easing: "easeOutQuart",
+    });
+  });
+}
+
+export function sliderAnimation() {
+  anime({
+    targets: ".slider",
+    top: "533px",
+    duration: 900,
+    easing: "easeOutQuart",
+  });
+}
+
+export function sliderDownAnimation() {
+  return new Promise((res) => {
+    anime({
+      targets: ".slider",
+      complete: res,
+      top: "960px",
+      duration: 900,
+      easing: "easeOutQuart",
+    });
+  });
+}
+
+export function goldTextAnimation() {
+  anime({
+    targets: ".gold-text",
+    innerHTML: [500, 150],
+    easing: "linear",
+    round: 10, // Will round the animated value to 1 decimal
   });
 }
 
@@ -33,15 +84,70 @@ export function scaleAnimation() {
   });
 }
 
-export function chooseAnimation(target) {
+export function summonBtnAnimation() {
+  return new Promise((res) => {
+    anime({
+      targets: ".summon-btn",
+      complete: res,
+      scale: [
+        { value: 1, duration: 80 },
+        { value: 0.8, duration: 80 },
+        { value: 1, duration: 80 },
+      ],
+      easing: "linear",
+    });
+  });
+}
+
+export function firstIconAnimation() {
+  return new Promise((res) => {
+    anime({
+      targets: ".icon1",
+      complete: res,
+      scale: [
+        { value: 0.35, duration: 80 },
+        { value: 0.32, duration: 80 },
+        { value: 0.35, duration: 80 },
+      ],
+      easing: "linear",
+    });
+  });
+}
+
+export function platformAnimation() {
   anime({
-    targets: target,
-    scale: [
-      { value: 1, duration: 80 },
-      { value: 0.9, duration: 80 },
-      { value: 1, duration: 80 },
-    ],
+    targets: ".platform",
+    duration: 800,
+    scale: 1.1,
+    direction: "alternate",
+    loop: true,
     easing: "linear",
+  });
+}
+
+export function arrowAnimation() {
+  anime({
+    targets: ".arrow-container",
+    duration: 1000,
+    top: "470px",
+    direction: "alternate",
+    loop: true,
+    easing: "linear",
+  });
+}
+
+export function chooseAnimation(target) {
+  return new Promise((res) => {
+    anime({
+      targets: target,
+      complete: res,
+      scale: [
+        { value: 1, duration: 80 },
+        { value: 0.8, duration: 80 },
+        { value: 1, duration: 80 },
+      ],
+      easing: "linear",
+    });
   });
 }
 
@@ -61,8 +167,8 @@ export function armyFromAnimation() {
     anime({
       targets: ".army-from",
       complete: res,
-      top: 460,
-      left: 170,
+      top: 524,
+      left: 192,
       duration: 700,
       easing: "linear",
     })
@@ -74,9 +180,9 @@ export function armyToAnimation() {
     anime({
       targets: ".army-to",
       complete: res,
-      top: 370,
-      left: 190,
-      duration: 1300,
+      top: 314,
+      left: 157,
+      duration: 1700,
       easing: "linear",
     })
   );
@@ -99,8 +205,8 @@ export function barrackAnimation() {
     anime({
       targets: ".barrack",
       complete: res,
-      scale: 0.48,
-      duration: 200,
+      scale: 1,
+      duration: 400,
     });
   });
 }
@@ -110,12 +216,15 @@ export function healthBarAnimation() {
     anime({
       targets: ".health",
       complete: res,
-      delay: 500,
       width: [
-        { value: "100%", duration: 0 },
-        { value: "50%", duration: 700 },
-        { value: "50%", duration: 500 },
-        { value: "0%", duration: 700 },
+        { delay: 200, value: "100%", duration: 0 },
+        { value: "75%", duration: 350 },
+        { delay: 200, value: "75%", duration: 250 },
+        { value: "50%", duration: 350 },
+        { delay: 200, value: "50%", duration: 250 },
+        { value: "25%", duration: 350 },
+        { delay: 200, value: "25%", duration: 250 },
+        { value: "0%", duration: 0 },
       ],
       easing: "linear",
     });
